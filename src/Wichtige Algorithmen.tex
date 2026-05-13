@@ -1,0 +1,29 @@
+\subsection{Sortieralgorithmen}
+
+\subsubsection{InsertionSort}
+\begin{enumerate}
+    \item Wähle num = input[i]
+    \item Vergleiche alle Indices j $<$ i und schiebe num nach input[j], wenn input[j] $<$ num
+\end{enumerate}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
+    Laufzeit & \textbf{Best case}: $O(n)$ falls Input sortiert \\
+             & \textbf{Worst case}: $O(n^2)$ falls Input absteigend sortiert \\
+             & $O(hn)$ falls ein Element höchstens $h$ Elemente von seiner Zielposition entfernt ist
+\end{tabularx}
+
+\subsection{Suchalgorithmen}
+\subsubsection{Binary Search}
+\textbf{Annahme}: Liste sortiert, gesucht $x$.
+\begin{enumerate}
+    \item Vergleiche $x$ mit dem Wert, der in der Mitte steht
+    \begin{itemize}
+        \item[a)] Bei Gleichheit sind wir fertig
+        \item[b)] Falls $x$ kleiner als der mittlere Wert, gehe zu $1.$ mit dem linken Teil des Arrays
+        \item[c)] Falls $x$ größer als der mittlere Wert, gehe zu $1.$ mit dem rechten Teil des Arrays
+    \end{itemize}
+\end{enumerate}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
+    Laufzeit & \textbf{Best case}: $O(1)$ falls mittlere Wert gleich gesuchter Wert \\
+             & \textbf{Worst case}: $O(\log_2 n)$
+\end{tabularx}
