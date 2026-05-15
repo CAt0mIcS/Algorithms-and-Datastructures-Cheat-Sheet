@@ -1,20 +1,21 @@
 \subsection{Asymptotische Notation}
 
 \begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}|}
-    $g=O(f)$      & $g$ wächst maximal so schnell wie $f$                         \\
-                  & $0 \le \lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} < \infty$ \\
-                  & $O(f):=\{g: \mathbb R \rightarrow \mathbb R \, | \,  \exists c>0,n_0 \in \mathbb N : \forall n > n_0: g(n) \le c f(n)\}$ \\ \hline
-    $g=\Omega(f)$ & $g$ wächst mindestens so schnell wie $f$                      \\
-                  & $0 < \lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} \le \infty$ \\
-                  & $\Omega(f):=\{g: \mathbb R \rightarrow \mathbb R \, | \,  \exists c>0,n_0 \in \mathbb N : \forall n > n_0: g(n) \ge c f(n)\}$ \\ \hline
-    $g=\Theta(f)$ & $g$ wächst genauso schnell wie $f$                            \\
-                  & $0 < \lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} < \infty$   \\
-                  & $\Theta(f)=O(f) \cap o(f)$ \\ \hline
-    $g=o(f)$      & $g$ wächst langsamer als $f$                                  \\
-                  & $\lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} = 0$            \\
-                  & $o(f):=\{g: \mathbb R \rightarrow \mathbb R \, | \,  \forall c>0 \, \exists n_0 \in \mathbb N : \forall n > n_0: g(n) \le c f(n)\}$ \\ \hline
-    $g=\omega(f)$ & $g$ wächst schneller als $f$                                  \\
-                  & $\lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} = \infty$       \\
+    $g=O(f)$      & $g$ wächst maximal so schnell wie $f$                                                                                                    \\
+                  & $0 \le \lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} < \infty$                                                                            \\
+                  & $O(f):=\{g: \mathbb R \rightarrow \mathbb R \, | \,  \exists c>0,n_0 \in \mathbb N : \forall n > n_0: g(n) \le c f(n)\}$                 \\ \hline
+    $g=\Omega(f)$ & $g$ wächst mindestens so schnell wie $f$                                                                                                 \\
+                  & $0 < \lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} \le \infty$                                                                            \\
+                  & $\Omega(f):=\{g: \mathbb R \rightarrow \mathbb R \, | \,  \exists c>0,n_0 \in \mathbb N : \forall n > n_0: g(n) \ge c f(n)\}$            \\ \hline
+    $g=\Theta(f)$ & $g$ wächst genauso schnell wie $f$                                                                                                       \\
+                  & $0 < \lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} < \infty$                                                                              \\
+                  & $\Theta(f)=O(f) \cap o(f)$                                                                                                               \\
+                  & $c_1f(n)\le g(n) \le c_2f(n)$                                                                                                            \\ \hline
+    $g=o(f)$      & $g$ wächst langsamer als $f$                                                                                                             \\
+                  & $\lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} = 0$                                                                                       \\
+                  & $o(f):=\{g: \mathbb R \rightarrow \mathbb R \, | \,  \forall c>0 \, \exists n_0 \in \mathbb N : \forall n > n_0: g(n) \le c f(n)\}$      \\ \hline
+    $g=\omega(f)$ & $g$ wächst schneller als $f$                                                                                                             \\
+                  & $\lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} = \infty$                                                                                  \\
                   & $\omega(f):=\{g: \mathbb R \rightarrow \mathbb R \, | \,  \forall c>0 \, \exists n_0 \in \mathbb N : \forall n > n_0: g(n) \ge c f(n)\}$
 \end{tabularx}
 
