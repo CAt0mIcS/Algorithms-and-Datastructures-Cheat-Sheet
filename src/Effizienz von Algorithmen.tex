@@ -10,7 +10,7 @@
     $g=\Theta(f)$ & $g$ wächst genauso schnell wie $f$                                                                                                       \\
                   & $0 < \lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} < \infty$                                                                              \\
                   & $\Theta(f)=O(f) \cap o(f)$                                                                                                               \\
-                  & $c_1f(n)\le g(n) \le c_2f(n)$                                                                                                            \\ \hline
+                  & $c_1f(n)\le g(n) \le c_2f(n)$    TODO: Für rest                                                                                                        \\ \hline
     $g=o(f)$      & $g$ wächst langsamer als $f$                                                                                                             \\
                   & $\lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} = 0$                                                                                       \\
                   & $o(f):=\{g: \mathbb R \rightarrow \mathbb R \, | \,  \forall c>0 \, \exists n_0 \in \mathbb N : \forall n > n_0: g(n) \le c f(n)\}$      \\ \hline
@@ -35,3 +35,25 @@ Für $O, \Omega, \Theta$:
     \item $\sum_{i=1}^ni^2=\frac{n(n+1)(2n+1)}{6}$
     \item $\sum_{i=0}^na^i=\frac{a^{n+1}-1}{a-1}$
 \end{itemize}
+
+\subsection{Rekursion}
+\subsubsection{Rekursionsgleichung}
+Laufzeit eines rekursiven Algorithmus gegeben durch z.B.
+\begin{equation*}
+    \mathbf{T(n)}=\begin{cases}
+        O(n) + 2\mathbf{T(\frac n2)} & n > 1 \\
+        O(1) & \text{sonst}
+    \end{cases}
+\end{equation*}
+\textbf{I. Aufstellen}
+\begin{itemize}
+    \item Nichtrekursive Laufzeiten summieren, z.B. $3O(n)=O(n)$
+    \item Rekursiver Aufruf bekommt eine Laufzeit abhängig von $T(n)$ mit einer meist kleineren Eingabe von $n$, z.B. $T(n/2)$ oder $T(n-1)$
+\end{itemize}
+\textbf{II. Lösen}
+
+\subsubsection{Mastertheorem}
+TODO
+
+\subsubsection{Rekursionsbaum}
+TODO s. VL 18.5.
