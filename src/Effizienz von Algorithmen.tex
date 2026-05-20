@@ -10,7 +10,7 @@
     $g=\Theta(f)$ & $g$ wächst genauso schnell wie $f$                                                                                                       \\
                   & $0 < \lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} < \infty$                                                                              \\
                   & $\Theta(f)=O(f) \cap o(f)$                                                                                                               \\
-                  & $c_1f(n)\le g(n) \le c_2f(n)$    TODO: Für rest                                                                                                        \\ \hline
+                  & $c_1f(n)\le g(n) \le c_2f(n)$    TODO: Für rest                                                                                          \\ \hline
     $g=o(f)$      & $g$ wächst langsamer als $f$                                                                                                             \\
                   & $\lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} = 0$                                                                                       \\
                   & $o(f):=\{g: \mathbb R \rightarrow \mathbb R \, | \,  \forall c>0 \, \exists n_0 \in \mathbb N : \forall n > n_0: g(n) \le c f(n)\}$      \\ \hline
@@ -41,8 +41,8 @@ Für $O, \Omega, \Theta$:
 Laufzeit eines rekursiven Algorithmus gegeben durch z.B.
 \begin{equation*}
     \mathbf{T(n)}=\begin{cases}
-        O(n) + 2\mathbf{T(\frac n2)} & n > 1 \\
-        O(1) & \text{sonst}
+        O(n) + 2\mathbf{T(\frac n2)} & n > 1        \\
+        O(1)                         & \text{sonst}
     \end{cases}
 \end{equation*}
 \textbf{I. Aufstellen}
@@ -51,9 +51,18 @@ Laufzeit eines rekursiven Algorithmus gegeben durch z.B.
     \item Rekursiver Aufruf bekommt eine Laufzeit abhängig von $T(n)$ mit einer meist kleineren Eingabe von $n$, z.B. $T(n/2)$ oder $T(n-1)$
 \end{itemize}
 \textbf{II. Lösen}
+Durch Raten+Induktion, Mastertheorem, oder Rekursionsbaum
 
 \subsubsection{Mastertheorem}
-TODO
+Rekursionsgleichung aufstellen und rekursiven Fall betrachten: Seien $a \ge 1, b \ge 1$ Konstanten
+\begin{enumerate}
+    \item[] $T(n)=aT(\frac nb)+f(n)$
+    \item Fall: Falls $f(n)=O(n^{\log_b(a)-\epsilon}), \quad \epsilon > 0$ gilt:\\
+          $T(n)=\Theta(n^{\log_b a})$
+    \item Fall: Falls $f(n)=\Theta(n^{\log_b a}\log^k n), \quad k \ge 0$ gilt: \\
+          $T(n)=\Theta(n^{\log_b a}\log^{k+1}n)$
+\end{enumerate}
+Man kann hier immer annehmen, dass $n=b^l$ gilt, damit $n/b$ eine Integer-Division bleibt
 
 \subsubsection{Rekursionsbaum}
 TODO s. VL 18.5.
