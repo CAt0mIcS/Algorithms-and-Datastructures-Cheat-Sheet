@@ -36,6 +36,17 @@ Für $O, \Omega, \Theta$:
     \item $\sum_{i=0}^na^i=\frac{a^{n+1}-1}{a-1}$
 \end{itemize}
 
+\subsubsection{Amortisierte Laufzeitschranken}
+Kosten eines teuren Aufrufs einer Funktion werden auf die \textbf{vorherigen}, billigen Aufrufe aufgeteilt (z.B. vector resize sehr selten teuer, sehr oft billig) \\
+Verwendet bei Analyse von Algorithmen, die Datenstrukturen verwenden (z.B. vector.push\_back worst-case $O(n)$, das passiert aber ganz selten (nur bei resize), sonst $O(1)$) \\
+Datenstruktur muss am Anfang des Algorithmus leer sein! 
+Laufzeit ergibt sich aus der Summe der Zeitfunktion einer Operation, welche $n, \log n, ...$-mal ausgeführt wird, z.B.
+\begin{equation*}
+    (\log n)T_{op1} + nT_{op2} + O(n)
+\end{equation*}
+Nachteil: Macht nur Sinn bei der Laufzeitanalyse von Algorithmen, da es egal ist, wann z.B. der vector resize passiert für die insgesamte Laufzeit.
+Bei einem FPS muss das Spiel zu jedem Zeitpunkt flüssig laufen $\rightarrow$ FPS-drop during resize
+
 \subsection{Rekursion}
 \subsubsection{Rekursionsgleichung}
 Laufzeit eines rekursiven Algorithmus gegeben durch z.B.
