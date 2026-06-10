@@ -48,22 +48,28 @@ Nachteil: Macht nur Sinn bei der Laufzeitanalyse von Algorithmen, da es egal ist
 Bei einem FPS muss das Spiel zu jedem Zeitpunkt flüssig laufen $\rightarrow$ FPS-drop during resize
 
 \subsection{Rekursion}
-\subsubsection{Rekursionsgleichung}
-Laufzeit eines rekursiven Algorithmus gegeben durch z.B.
-\begin{equation*}
-    \mathbf{T(n)}=\begin{cases}
-        O(n) + 2\mathbf{T(\frac n2)} & n > 1        \\
-        O(1)                         & \text{sonst}
-    \end{cases}
-\end{equation*}
-\textbf{I. Aufstellen}
-\begin{itemize}
-    \item Nichtrekursive Laufzeiten summieren, z.B. $3O(n)=O(n)$
-    \item Rekursiver Aufruf bekommt eine Laufzeit abhängig von $T(n)$ mit einer meist kleineren Eingabe von $n$, z.B. $T(n/2)$ oder $T(n-1)$
-\end{itemize}
-\textbf{II. Lösen}
-Durch Raten+Induktion, Mastertheorem, oder Rekursionsbaum
+    \begin{emphbox}
+    \subsubsection{Rekursionsgleichung}
+    Laufzeit eines rekursiven Algorithmus gegeben durch z.B.
+    \begin{equation*}
+        \mathbf{T(n)}=\begin{cases}
+            O(n) + 2\mathbf{T(\frac n2)} & n > 1        \\
+            O(1)                         & \text{sonst}
+        \end{cases}
+    \end{equation*}
+\end{emphbox}
 
+\begin{sectionbox}
+    \textbf{I. Aufstellen}
+    \begin{itemize}
+        \item Nichtrekursive Laufzeiten summieren, z.B. $3O(n)=O(n)$
+        \item Rekursiver Aufruf bekommt eine Laufzeit abhängig von $T(n)$ mit einer meist kleineren Eingabe von $n$, z.B. $T(n/2)$ oder $T(n-1)$
+    \end{itemize}
+    \textbf{II. Lösen}
+    Durch Raten+Induktion, Mastertheorem, oder Rekursionsbaum
+\end{sectionbox}
+
+\begin{emphbox}
 \subsubsection{Mastertheorem}
 Rekursionsgleichung aufstellen und rekursiven Fall betrachten: Seien $a \ge 1, b \ge 1$ Konstanten
 \begin{enumerate}
@@ -73,6 +79,7 @@ Rekursionsgleichung aufstellen und rekursiven Fall betrachten: Seien $a \ge 1, b
     \item Fall: Falls $f(n)=\Theta(n^{\log_b a}\log^k n), \quad k \ge 0$ gilt: \\
           $T(n)=\Theta(n^{\log_b a}\log^{k+1}n)$
 \end{enumerate}
+\end{emphbox}
 Man kann hier immer annehmen, dass $n=b^l$ gilt, damit $n/b$ eine Integer-Division bleibt
 
 \subsubsection{Rekursionsbaum}

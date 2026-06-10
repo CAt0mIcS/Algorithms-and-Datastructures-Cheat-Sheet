@@ -1,7 +1,20 @@
+Ein azyklischer (ohne Maschen), ungerichteter Graph
+\begin{sectionbox}
+\begin{description}
+    \item[Wald] Menge an Bäumen
+    \item[Blatt] Knoten ohne Kind
+    \item[innerer Knoten] Knoten mit Kind, der nicht die Wurzel ist
+    \item[Grad] Anzahl der \textbf{Kinder} eines Knotens
+    \item[Tiefe] Anzahl der Kanten, um von einem Knoten bis zur Wurzel zu gehen
+    \item[Höhe] Maximale Anzahl der Kanten, um von einem Knoten bis zu einem Blatt zu gehen
+\end{description}
+\end{sectionbox}
+
+
 \subsection{Binärbaum}
 \textbf{Eigenschaften}
 \begin{enumerate}
-    \item Baum $\rightarrow$ kreisfreier Graph
+    \item Baum
     \item höhstens zwei ausgehende Kanten pro Knoten
 \end{enumerate}
 
@@ -18,4 +31,4 @@ Laufzeit der Operationen $O(h)$ mit $h$ als Höhe des Baums (oft $\log n$) \\
 TODO: s. ZÜ 9.6. Inorder, Preorder, Postorder
 
 
-\subsection{Balancierter Binärbaum}
+\subsubsection{Balancierter Binärbaum}
