@@ -1,50 +1,50 @@
 \subsection{Sortieralgorithmen}
 
 \begin{sectionbox}
-\subsubsection{SelectionSort}
-Sucht das kleinste Element in der Liste, fügt es am Anfang einer neuen Liste ein und löscht es aus der alten Liste. 
-Wiederholt, bis alte Liste leer ist $\rightarrow O(n^2)$    
+    \subsubsection{SelectionSort}
+    Sucht das kleinste Element in der Liste, fügt es am Anfang einer neuen Liste ein und löscht es aus der alten Liste.
+    Wiederholt, bis alte Liste leer ist $\rightarrow O(n^2)$
 \end{sectionbox}
 
 \begin{sectionbox}
-\subsubsection{InsertionSort}
-\begin{enumerate}
-    \item Wähle num = input[i]
-    \item Vergleiche alle Indices j $<$ i und schiebe num nach input[j], wenn input[j] $<$ num
-\end{enumerate}
-\begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
-    Laufzeit & \textbf{Best case}: $O(n)$ falls Input sortiert                                       \\
-             & \textbf{Worst case}: $O(n^2)$ falls Input absteigend sortiert                         \\
-             & $O(hn)$ falls ein Element höchstens $h$ Elemente von seiner Zielposition entfernt ist
-\end{tabularx}
+    \subsubsection{InsertionSort}
+    \begin{enumerate}
+        \item Wähle num = input[i]
+        \item Vergleiche alle Indices j $<$ i und schiebe num nach input[j], wenn input[j] $<$ num
+    \end{enumerate}
+    \begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
+        Laufzeit & \textbf{Best case}: $O(n)$ falls Input sortiert                                       \\
+                 & \textbf{Worst case}: $O(n^2)$ falls Input absteigend sortiert                         \\
+                 & $O(hn)$ falls ein Element höchstens $h$ Elemente von seiner Zielposition entfernt ist
+    \end{tabularx}
 \end{sectionbox}
 
 \begin{sectionbox}
-\subsubsection{MergeSort}
-\textbf{Divide and Conquer - Rekursiv}
-\begin{enumerate}
-    \item Liste wird rekursiv halbiert, bis zwei Listen mit je einem Element entstehen
-    \item Die beiden Elemente werden verglichen und sortiert in die Rückgabeliste eingefügt: \@returns Liste mit 2 sortierten Elementen
-    \item Zwei Listen mit 2 Elementen werden sortiert gemerged, indem list1[i] mit list2[i] verglichen wird und das kleinere der beiden in die Ergebnisliste geschrieben wird
-    \item Wiederholung für alle Teillisten, bis am Ende zwei Listen mit $n/2$ sortierten Elementen gemerged werden $\rightarrow$ sortierte Liste
-\end{enumerate}
-\begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
-    Laufzeit & \textbf{Worst case}: $O(n\log_2 n)$
-\end{tabularx}    
+    \subsubsection{MergeSort}
+    \textbf{Divide and Conquer - Rekursiv}
+    \begin{enumerate}
+        \item Liste wird rekursiv halbiert, bis zwei Listen mit je einem Element entstehen
+        \item Die beiden Elemente werden verglichen und sortiert in die Rückgabeliste eingefügt: \\@returns Liste mit 2 sortierten Elementen
+        \item Zwei Listen mit 2 Elementen werden sortiert gemerged, indem list1[i] mit list2[i] verglichen wird und das kleinere der beiden in die Ergebnisliste geschrieben wird
+        \item Wiederholung für alle Teillisten, bis am Ende zwei Listen mit $n/2$ sortierten Elementen gemerged werden $\rightarrow$ sortierte Liste
+    \end{enumerate}
+    \begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
+        Laufzeit & \textbf{Worst case}: $O(n\log_2 n)$
+    \end{tabularx}
 \end{sectionbox}
 
 \begin{sectionbox}
-\subsubsection{QuickSort}
-\textbf{Divide and Conquer - Rekursiv}
-\begin{enumerate}
-    \item Wähle ein Pivotelement A[p]
-    \item Bewege alle Elemente $<$ A[p] nach links von A[p]
-    \item Bewege alle Elemente $>$ A[p] nach rechts von A[p]
-\end{enumerate}
-\begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
-    Laufzeit & \textbf{Worst case}: $O(n^2)$ falls als Pivotelement immer das größte Element gewählt wird (sehr selten) \\
-             & \textbf{Average}: $O(n\log n)$
-\end{tabularx}    
+    \subsubsection{QuickSort}
+    \textbf{Divide and Conquer - Rekursiv}
+    \begin{enumerate}
+        \item Wähle ein Pivotelement A[p]
+        \item Bewege alle Elemente $<$ A[p] nach links von A[p]
+        \item Bewege alle Elemente $>$ A[p] nach rechts von A[p]
+    \end{enumerate}
+    \begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
+        Laufzeit & \textbf{Worst case}: $O(n^2)$ falls als Pivotelement immer das größte Element gewählt wird (sehr selten) \\
+                 & \textbf{Average}: $O(n\log n)$
+    \end{tabularx}
 \end{sectionbox}
 
 
@@ -58,19 +58,19 @@ TODO
 
 \subsection{Suchalgorithmen}
 \begin{sectionbox}
-\subsubsection{Binary Search}
-\textbf{Annahme}: Liste sortiert, gesucht $x$.
-\begin{enumerate}
-    \item Vergleiche $x$ mit dem Wert, der in der Mitte steht
-          \begin{itemize}
-              \item[a)] Bei Gleichheit sind wir fertig
-              \item[b)] Falls $x$ kleiner als der mittlere Wert, gehe zu $1.$ mit dem linken Teil des Arrays
-              \item[c)] Falls $x$ größer als der mittlere Wert, gehe zu $1.$ mit dem rechten Teil des Arrays
-          \end{itemize}
-\end{enumerate}
+    \subsubsection{Binary Search}
+    \textbf{Annahme}: Liste sortiert, gesucht $x$.
+    \begin{enumerate}
+        \item Vergleiche $x$ mit dem Wert, der in der Mitte steht
+              \begin{itemize}
+                  \item[a)] Bei Gleichheit sind wir fertig
+                  \item[b)] Falls $x$ kleiner als der mittlere Wert, gehe zu $1.$ mit dem linken Teil des Arrays
+                  \item[c)] Falls $x$ größer als der mittlere Wert, gehe zu $1.$ mit dem rechten Teil des Arrays
+              \end{itemize}
+    \end{enumerate}
 
-\begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
-    Laufzeit & \textbf{Best case}: $O(1)$ falls mittlere Wert gleich gesuchter Wert \\
-             & \textbf{Worst case}: $O(\log_2 n)$
-\end{tabularx}    
+    \begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
+        Laufzeit & \textbf{Best case}: $O(1)$ falls mittlere Wert gleich gesuchter Wert \\
+                 & \textbf{Worst case}: $O(\log_2 n)$
+    \end{tabularx}
 \end{sectionbox}
