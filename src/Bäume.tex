@@ -18,7 +18,7 @@ Ein azyklischer (ohne Maschen), ungerichteter Graph
     \item höhstens zwei ausgehende Kanten pro Knoten
 \end{enumerate}
 
-\subsubsection{Binärere Suchbaum}
+\subsection{Binärere Suchbaum}
 Implementiert eine sortierte Sequenz.
 Laufzeit der Operationen $O(h)$ mit $h$ als Höhe des Baums (oft $\log n$) \\
 \textbf{Eigenschaften}
@@ -27,15 +27,38 @@ Laufzeit der Operationen $O(h)$ mit $h$ als Höhe des Baums (oft $\log n$) \\
     \item Alles was links eines Knotens ist ist kleiner und alles rechts eines Knotens ist größer
 \end{enumerate}
 
-\subsubsection{Balancierter Binärbaum}
-
-\subsubsection{AVL-Baum}
+\subsection{AVL-Baum}
 \textbf{Eigenschaften}
 \begin{enumerate}
     \item Binärer Suchbaum
-    \item An jedem Knoten gilt: Höhenunterschied von linkem und rechtem Teilbaum ist höchstens 1
+    \item An jedem Knoten gilt: Höhenunterschied (\textit{Balance}) von linkem und rechtem Teilbaum ist höchstens 1
     \item Höhe des Baums immer $O(\log n)$
+    \item \textit{Balance}(Knoten)=height(links) - height(rechts)
+    \item In den Blattknoten werden keine Daten gespeichert (\textit{Dummy}-Knoten, zählen nicht zur Höhe)
 \end{enumerate}
+
+\begin{sectionbox}
+    \subsubsection{Rotation}
+    \textbf{RightRotate(x)} \\
+    Wenn x \textit{left-heavy} und x.left auch \textit{left-heavy}
+
+    \textbf{LeftRotate(x)} \\
+    Wenn x \textit{right-heavy} und x.right auch \textit{right-heavy}
+
+    \textbf{DoubleRightRotate(x)} \\
+    Wenn x \textit{left-heavy} und x.left \textit{right-heavy}
+    \begin{enumerate}
+        \item LeftRotate(x.left)
+        \item RightRotate(x)
+    \end{enumerate}
+
+    \textbf{DoubleLeftRotate(x)} \\
+    Wenn x \textit{right-heavy} und x.left \textit{left-heavy}
+    \begin{enumerate}
+        \item RightRotate(x.right)
+        \item LeftRotate(x)
+    \end{enumerate}
+\end{sectionbox}
 
 \textbf{Traversierung} \\
 TODO: s. ZÜ 9.6. Inorder, Preorder, Postorder
