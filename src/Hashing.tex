@@ -1,0 +1,28 @@
+\begin{description}
+    \item[Universum $U$] Alle möglichen \textit{Keys} (rießig)
+    \item[Hashtabelle] Array $T[0,...,n-1]$
+    \item[Hashfunktion] $h: U \rightarrow [0,...,n-1]$. Bildet jeden möglichen \textit{Key} auf eine Index in der Hashtabelle ab. Sollte die \textit{Keys} möglichst gleichmäßig verteilen. Viele Kollisionen, da nicht injektiv
+\end{description}
+
+\begin{sectionbox}
+    \subsection{Hash-Strategien}
+    \begin{description}
+        \item[Direkte Addressierung] \textit{Key} wird als direkten Index in den Array der Daten verwendet (Identitätsabbildung)
+        \item[Perfektes Hashing] Man kennt alle möglichen \textit{Keys} und kann somit Kollisionen vermeiden (perfekte Hashfunktion)
+    \end{description}
+\end{sectionbox}
+
+\begin{sectionbox}
+    \subsection{Kollision}
+    \textbf{Problem}: Mehrere verschiedene \textit{Keys} zeigen auf dieselbe Speicherposition
+
+    \subsubsection{Open Addressing}
+    Alle Objekte werden in der Hashtabelle gespeichert mit Hashfunktion $h(key, 0), ..., h(key, n-1)$. 
+    Ist $h(key, 0)$ belegt, so wird das Element an $h(key, 1)$ eingefügt (ist das belegt, so in $h(key, 2)$ usw.)
+    \begin{description}
+        \item[Lineares Sondieren] $h(k, i)=h(k)+i\mod n$: Element wird an die nächste freie Stelle eingefügt
+    \end{description}
+
+    \subsubsection{Hashing with Chaining}
+    Elemente, welche auf die gleiche Position hashen werden in einer \textit{Linked List} gespeichert und verkettet
+\end{sectionbox}
