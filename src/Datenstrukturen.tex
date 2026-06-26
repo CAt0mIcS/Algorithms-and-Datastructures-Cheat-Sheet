@@ -5,9 +5,33 @@
 Jedes Element besitz einen \textit{key}, nach welchem die Elemente sortiert werden (z.B. \textit{std::map}).
 
 \subsubsection{Stack}
-Datenstruktur nach dem \textit{Last In - First Out} Prinzip. 
+Datenstruktur nach dem \textit{Last In - First Out} Prinzip.
 Elemente können oben angefügt werden und von oben gelöscht werden.
 
 \subsubsection{Queue}
-Datenstruktur nach dem \textit{First In - First Out} Prinzip. 
+Datenstruktur nach dem \textit{First In - First Out} Prinzip.
 Elemente können am Ende angefügt werden und von vorne gelöscht werden.
+
+\subsubsection{(Addressable) Priority Queue}
+\begin{itemize}
+    \item Einfügen von Elementen mit \textit{key}
+    \item Entfernen von Element mit \textbf{minimalem} \textit{key}
+    \item Ansehen des Elements mit \textbf{minimalem} \textit{key}
+    \item Für Addressable Priority Queue
+          \begin{itemize}
+              \item Insert gibt einen Handle zurück, womit man das jeweilige Element (nicht unbedingt das Minimum) löschen kann
+              \item \textit{decrease-key}: Ändert den Schlüssel von dem Handle dereferenzierten Objekts
+          \end{itemize}
+\end{itemize}
+Implementiert mithilfe Heap oder
+\textbf{Implementierung mithilfe Array}
+Speichert Knoten von oben nach unten und links nach rechts (\textit{root, root->left, root->right, root->left->left, ...})
+\begin{itemize}
+    \item Wurzel an $i=0$
+    \item Knoten an Position $i$
+    \item Elternknoten an Position $(i-1)/2$
+    \item linkes Kind an Position $2i+1$
+    \item rechtes Kind an Position $2i+2$
+\end{itemize}
+
+TODO: Welche Datenstrukturen implementieren AVL-Baum, balancierter Baum, Binärbaum, ... in C++

@@ -18,13 +18,43 @@ Ein azyklischer (ohne Maschen), ungerichteter Graph
     \item höhstens zwei ausgehende Kanten pro Knoten
 \end{enumerate}
 
+\subsection{Heap}
+\textbf{Eigenschaften}
+\begin{enumerate}
+    \item Die Kinder haben immer einen größeren(/gleichen) Schlüssel als der Elternknoten
+    \item Elemente werden "von links nach rechts" eingefügt, ist eine Zeile voll, so geht man wieder nach links und eine Zeile weiter runter
+    \item Verwaltet Zeiger auf das letzte Element
+\end{enumerate}
+
+\textbf{Einfügen}
+\begin{enumerate}
+    \item Füge Element nach dem letzten Element (am Nachfolger) ein
+    \item Tausche Kind und Elternknoten, bis die Heap-Eigenschaft wieder erfüllt ist
+\end{enumerate}
+
+\textbf{Löschen}
+\begin{enumerate}
+    \item Ersetze zu löschende Element mit dem letzten Element ($x$) und lösche das vorherige letzte Element
+    \item Heap Eigenschaft kann entweder an dem neuen Elternknoten oder an beiden Kindknoten verletzt sein
+    \begin{itemize}
+        \item Ist der Elternknoten größer als $x$, so tausche Kind und Elternknoten, bis die Heap-Eigenschaft wieder erfüllt ist
+        \item Ist $x$ größer als beide Kinder von $x$, so tausche $x$ und das kleinere Kind, bis ...
+    \end{itemize}
+\end{enumerate}
+
 \subsection{Binärere Suchbaum}
 Implementiert eine sortierte Sequenz.
 Laufzeit der Operationen $O(h)$ mit $h$ als Höhe des Baums (oft $\log n$) \\
 \textbf{Eigenschaften}
 \begin{enumerate}
-    \item Binärbaum
+    \item balancierter Suchbaum
     \item Alles was links eines Knotens ist ist kleiner und alles rechts eines Knotens ist größer
+\end{enumerate}
+
+\subsection{Balancierter Suchbaum}
+\textbf{Eigenschaften}
+\begin{enumerate}
+    \item Binärer Suchbaum, wobei die Höhe des Baumes minimal ($~O(\log n)$) gehalten wird
 \end{enumerate}
 
 \subsection{AVL-Baum}
@@ -34,6 +64,7 @@ Laufzeit der Operationen $O(h)$ mit $h$ als Höhe des Baums (oft $\log n$) \\
     \item An jedem Knoten gilt: Höhenunterschied (\textit{Balance}) von linkem und rechtem Teilbaum ist höchstens 1
     \item Höhe des Baums immer $O(\log n)$
     \item \textit{Balance}(Knoten)=height(links) - height(rechts)
+    \item Die \textit{Balance} eines Knotens wird in diesem gespeichert
     \item In den Blattknoten werden keine Daten gespeichert (\textit{Dummy}-Knoten, zählen nicht zur Höhe)
 \end{enumerate}
 
