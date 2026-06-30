@@ -21,30 +21,88 @@
 
 \begin{sectionbox}
     \subsubsection{MergeSort}
-    \textbf{Divide and Conquer - Rekursiv}
-    \begin{enumerate}
-        \item Liste wird rekursiv halbiert, bis zwei Listen mit je einem Element entstehen
-        \item Die beiden Elemente werden verglichen und sortiert in die Rückgabeliste eingefügt: \\@returns Liste mit 2 sortierten Elementen
-        \item Zwei Listen mit 2 Elementen werden sortiert gemerged, indem list1[i] mit list2[i] verglichen wird und das kleinere der beiden in die Ergebnisliste geschrieben wird
-        \item Wiederholung für alle Teillisten, bis am Ende zwei Listen mit $n/2$ sortierten Elementen gemerged werden $\rightarrow$ sortierte Liste
-    \end{enumerate}
+    Liste wird rekursiv halbiert, bis zwei Listen mit je einem Element entstehen. Diese werden jeweils sortiert und mit anderen Teilergebnissen zusammengefügt
     \begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
-        Laufzeit & \textbf{Worst case}: $O(n\log_2 n)$
+        Laufzeit & \textbf{Worst case}: $T(n) = 2T(\frac{n}{2}) + O(n) \Rightarrow O(n\log_2 n)$
     \end{tabularx}
+
+    \begin{sectionbox}
+        \parbox{4cm}{
+            \t{mergeSort(List* a):\\
+                if (a$\rightarrow$length() $<$= 1)\\
+                \hspace*{1em} return a;\\
+                List* b = a$\rightarrow$half();\\
+                a = mergeSort(a);\\
+                b = mergeSort(b);\\
+                return merge(a,b);\\
+                \\
+                half():\\
+                Node* ptr = head;\\
+                for (0 to length/2-2)\\
+                \hspace*{1em} ptr = ptr$\rightarrow$next;\\
+                List* L = new (ptr$\rightarrow$next);\\
+                ptr$\rightarrow$next = NULL;\\
+                return L;
+            }}\hspace{-0.6cm}
+        \parbox{2.9cm}{
+            \t{
+                merge(a, b):\\
+                if (a$\rightarrow$empty())\\
+                \hspace*{1em} delete a; return b;\\
+                if (b$\rightarrow$empty())\\
+                \hspace*{1em} delete b; return a;\\
+                List* h;\\
+                if a[0] $<$ b[0]\\
+                \hspace*{1em} h = a; \\
+                else h = b;\\
+                int d = h$\rightarrow$delFront();\\
+                List L = merge(a,b);\\
+                L$\rightarrow$insertFront(d);\\
+                return L;\\
+            }}
+    \end{sectionbox}
+
 \end{sectionbox}
 
 \begin{sectionbox}
     \subsubsection{QuickSort}
-    \textbf{Divide and Conquer - Rekursiv}
     \begin{enumerate}
         \item Wähle ein Pivotelement A[p]
-        \item Bewege alle Elemente $<$ A[p] nach links von A[p]
-        \item Bewege alle Elemente $>$ A[p] nach rechts von A[p]
+        \item Wähle Index $i,j=\text{start}$. Gehe durch die gesamte Liste (überspringe Pivot).
+              \begin{itemize}
+                  \item Falls A[j] $>$ A[p] $\rightarrow$ j++
+                  \item Falls A[j] $<$ A[p] $\rightarrow$ swap(i, j), i++, j++
+              \end{itemize}
+              % \item Bewege alle Elemente $<$ A[p] nach links von A[p]
+              % \item Bewege alle Elemente $>$ A[p] nach rechts von A[p]
+        \item Teile Liste in zwei Teile, jeweils links und rechts von A[p] (ohne A[p])
     \end{enumerate}
     \begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
-        Laufzeit & \textbf{Worst case}: $O(n^2)$ falls als Pivotelement immer das größte Element gewählt wird (sehr selten) \\
-                 & \textbf{Average}: $O(n\log n)$
+        Laufzeit & \textbf{Worst case}: $T(n-1) + O(n) \rightarrow O(n^2)$ falls als Pivotelement immer das größte Element gewählt wird (sehr selten) \\
+                 & \textbf{Average}: $T(\frac{n}{2}) + O(n) \rightarrow O(n\log n)$
     \end{tabularx}
+
+    \begin{sectionbox}
+        \parbox{7cm}{\t{quickSort(A, left, right): \\
+                if(right $<$= left) return \\
+                pivotIdx = partition(A, left, right) \\
+                quickSort(A, left, pivotIdx - 1) \\
+                quickSort(A, pivotIdx + 1, right)
+            }}
+
+        \vspace{3mm}
+
+        \parbox{4cm}{\t{partition(A, left, right): \\
+                i = left \\
+                pivot = A[r] \\
+                for(j = left; j $<$= right; j++) \\
+                \hspace*{1em} if(A[j] $<$= pivot) \\
+                \hspace*{2em} swap(A, i, j) \\
+                \hspace*{2em} i++ \\
+                return i - 1
+            }}
+    \end{sectionbox}
+
 \end{sectionbox}
 
 
@@ -54,23 +112,7 @@ Man sucht das $k$-kleinste Element in einer Liste
 \textbf{Idee}: QuickSort, aber rekursiver Aufruf nur in der passenden Hälfte
 
 \subsubsection{BFPRT Algorithmus}
-TODO
-
-\subsection{Suchalgorithmen}
-\begin{sectionbox}
-    \subsubsection{Binary Search}
-    \textbf{Annahme}: Liste sortiert, gesucht $x$.
-    \begin{enumerate}
-        \item Vergleiche $x$ mit dem Wert, der in der Mitte steht
-              \begin{itemize}
-                  \item[a)] Bei Gleichheit sind wir fertig
-                  \item[b)] Falls $x$ kleiner als der mittlere Wert, gehe zu $1.$ mit dem linken Teil des Arrays
-                  \item[c)] Falls $x$ größer als der mittlere Wert, gehe zu $1.$ mit dem rechten Teil des Arrays
-              \end{itemize}
-    \end{enumerate}
-
-    \begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
-        Laufzeit & \textbf{Best case}: $O(1)$ falls mittlere Wert gleich gesuchter Wert \\
-                 & \textbf{Worst case}: $O(\log_2 n)$
-    \end{tabularx}
-\end{sectionbox}
+Findet Median in einer nichtsortierten Liste \\
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}l@{\hspace{.5em}}|X@{}}
+    Laufzeit & \textbf{Worst case}: $T(\frac{n}{5})+T(\frac{7n}{10})+O(n) \rightarrow O(n)$
+\end{tabularx}

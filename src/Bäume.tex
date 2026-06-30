@@ -1,16 +1,3 @@
-Ein azyklischer (ohne Maschen), ungerichteter Graph
-\begin{sectionbox}
-    \begin{description}
-        \item[Wald] Menge an Bäumen
-        \item[Blatt] Knoten ohne Kind
-        \item[innerer Knoten] Knoten mit Kind, der nicht die Wurzel ist
-        \item[Grad] Anzahl der \textbf{Kinder} eines Knotens
-        \item[Tiefe] Anzahl der Kanten, um von einem Knoten bis zur Wurzel zu gehen
-        \item[Höhe] Maximale Anzahl der Kanten, um von einem Knoten bis zu einem Blatt zu gehen
-    \end{description}
-\end{sectionbox}
-
-
 \subsection{Binärbaum}
 \textbf{Eigenschaften}
 \begin{enumerate}
@@ -18,12 +5,13 @@ Ein azyklischer (ohne Maschen), ungerichteter Graph
     \item höhstens zwei ausgehende Kanten pro Knoten
 \end{enumerate}
 
-\subsection{Heap}
+\subsection{Heap std::priority\_queue}
 \textbf{Eigenschaften}
 \begin{enumerate}
     \item Die Kinder haben immer einen größeren(/gleichen) Schlüssel als der Elternknoten
-    \item Elemente werden "von links nach rechts" eingefügt, ist eine Zeile voll, so geht man wieder nach links und eine Zeile weiter runter
+    \item Elemente werden \textit{von links nach rechts} eingefügt, ist eine Zeile voll, so geht man wieder nach links und eine Zeile weiter runter
     \item Verwaltet Zeiger auf das letzte Element
+    \item Suchen $O(n)$, Einfügen/Löschen $O(\log n)$
 \end{enumerate}
 
 \textbf{Einfügen}
@@ -36,31 +24,48 @@ Ein azyklischer (ohne Maschen), ungerichteter Graph
 \begin{enumerate}
     \item Ersetze zu löschende Element mit dem letzten Element ($x$) und lösche das vorherige letzte Element
     \item Heap Eigenschaft kann entweder an dem neuen Elternknoten oder an beiden Kindknoten verletzt sein
-    \begin{itemize}
-        \item Ist der Elternknoten größer als $x$, so tausche Kind und Elternknoten, bis die Heap-Eigenschaft wieder erfüllt ist
-        \item Ist $x$ größer als beide Kinder von $x$, so tausche $x$ und das kleinere Kind, bis ...
-    \end{itemize}
+          \begin{itemize}
+              \item Ist der Elternknoten größer als $x$, so tausche Kind und Elternknoten, bis die Heap-Eigenschaft wieder erfüllt ist
+              \item Ist $x$ größer als beide Kinder von $x$, so tausche $x$ und das kleinere Kind, bis ...
+          \end{itemize}
 \end{enumerate}
 
 \subsection{Binärere Suchbaum}
-Implementiert eine sortierte Sequenz.
-Laufzeit der Operationen $O(h)$ mit $h$ als Höhe des Baums (oft $\log n$) \\
+Implementiert eine sortierte Sequenz. \\
 \textbf{Eigenschaften}
 \begin{enumerate}
-    \item balancierter Suchbaum
+    \item Binärbaum
     \item Alles was links eines Knotens ist ist kleiner und alles rechts eines Knotens ist größer
+    \item Ø Laufzeit der Operationen $O(h)$ mit $h$ als Höhe des Baums (oft $\log n$). Worst case $O(n)$
+\end{enumerate}
+\textbf{Operationen}
+\begin{description}
+    \item[Löschen]
+          \begin{enumerate}
+              \item Fall: Element hat keine Kinder oder keinen Nachfolger: Einfach löschen
+              \item Fall: Element hat ein Kind: zu löschende Element überbrücken: Elternknoten mit Kind verbinden
+              \item Fall: Element hat zwei Kinder: Nachfolger bestimmen, Nachfolger überbrücken, zu löschende Element mit Nachfolger ersetzen
+          \end{enumerate}
+    \item[Nachfolger] Das Element, welches am wenigsten größer als mein Bezugselement ist. Entweder im rechten Teilbaum oder man geht nach oben und sucht das erste Element, von dem man ein linker Teilbaum ist
+\end{description}
+
+\subsection{Balancierter Suchbaum std::set, std::map}
+\textbf{Eigenschaften}
+\begin{enumerate}
+    \item Binärer Suchbaum, wobei die Höhe des Baumes minimal ($\approx O(\log n)$) gehalten wird
+    \item Alle Operationen garantiert $O(\log n$)
 \end{enumerate}
 
-\subsection{Balancierter Suchbaum}
-\textbf{Eigenschaften}
-\begin{enumerate}
-    \item Binärer Suchbaum, wobei die Höhe des Baumes minimal ($~O(\log n)$) gehalten wird
-\end{enumerate}
+\textbf{Operationen}
+\begin{description}
+    \item[Einfügen] Fix-Up-Routine muss ab dem Elternknoten des eingefügten Elements aufgerufen werden
+    \item[Löschen] Fix-Up-Routine muss ab dem Elternknoten des gelöschten Elements aufgerufen werden
+\end{description}
 
 \subsection{AVL-Baum}
 \textbf{Eigenschaften}
 \begin{enumerate}
-    \item Binärer Suchbaum
+    \item Balancierter Suchbaum
     \item An jedem Knoten gilt: Höhenunterschied (\textit{Balance}) von linkem und rechtem Teilbaum ist höchstens 1
     \item Höhe des Baums immer $O(\log n)$
     \item \textit{Balance}(Knoten)=height(links) - height(rechts)
@@ -68,29 +73,48 @@ Laufzeit der Operationen $O(h)$ mit $h$ als Höhe des Baums (oft $\log n$) \\
     \item In den Blattknoten werden keine Daten gespeichert (\textit{Dummy}-Knoten, zählen nicht zur Höhe)
 \end{enumerate}
 
+% \begin{sectionbox}
+%     \subsubsection{Rotation}
+%     \textbf{LeftRotate(x)} \\
+%     Wenn $\text{balance}(x)=-2$ und $\text{balance}(x.right) \le 0$
+
+%     \textbf{RightRotate(x)} \\
+%     Wenn $\text{balance}(x)=2$ und $\text{balance}(x.left) \ge 0$
+
+%     \textbf{DoubleRightRotate(x)} \\
+%     Wenn $\text{balance}(x)=2$ und $\text{balance}(x.left) < 0$
+%     \begin{enumerate}
+%         \item LeftRotate(x.left)
+%         \item RightRotate(x)
+%     \end{enumerate}
+
+%     \textbf{DoubleLeftRotate(x)} \\
+%     Wenn $\text{balance}(x)=-2$ und $\text{balance}(x.right) > 0$
+%     \begin{enumerate}
+%         \item RightRotate(x.right)
+%         \item LeftRotate(x)
+%     \end{enumerate}
+% \end{sectionbox}
+
 \begin{sectionbox}
-    \subsubsection{Rotation}
-    \textbf{RightRotate(x)} \\
-    Wenn x \textit{left-heavy} und x.left auch \textit{left-heavy}
-
-    \textbf{LeftRotate(x)} \\
-    Wenn x \textit{right-heavy} und x.right auch \textit{right-heavy}
-
-    \textbf{DoubleRightRotate(x)} \\
-    Wenn x \textit{left-heavy} und x.left \textit{right-heavy}
-    \begin{enumerate}
-        \item LeftRotate(x.left)
-        \item RightRotate(x)
-    \end{enumerate}
-
-    \textbf{DoubleLeftRotate(x)} \\
-    Wenn x \textit{right-heavy} und x.left \textit{left-heavy}
-    \begin{enumerate}
-        \item RightRotate(x.right)
-        \item LeftRotate(x)
-    \end{enumerate}
+    \textbf{Balance eines Knotens wiederherstellen:}\\
+    \begin{sectionbox}
+        \t{ Balance(v)\\
+            if (v->balance == -2)\\
+            \hspace*{1em} if (v->right->balance $\in \{0, -1\}$)\\
+            \hspace*{2em}   v = LeftRotate(v)\\
+            \hspace*{1em} else\\
+            \hspace*{2em}   v->right = RightRotate(v->right)\\
+            \hspace*{2em}   v = LeftRotate(v) // DoubleLeftRotate\\
+            else if (v->balance == +2)\\
+            \hspace*{1em} if (v->left->balance $\in \{0, 1\}$)\\
+            \hspace*{2em}   v = RightRotate(v)\\
+            \hspace*{1em} else\\
+            \hspace*{2em}   v->left = LeftRotate(v->left)\\
+            \hspace*{2em}   v = RightRotate(v) // DoubleRightRotate\\
+            return v
+        }
+    \end{sectionbox}
 \end{sectionbox}
 
-\textbf{Traversierung} \\
-TODO: s. ZÜ 9.6. Inorder, Preorder, Postorder
 

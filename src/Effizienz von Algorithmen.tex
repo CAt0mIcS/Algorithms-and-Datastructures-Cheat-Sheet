@@ -10,7 +10,7 @@
     $g=\Theta(f)$ & $g$ wächst genauso schnell wie $f$                                                                                                       \\
                   & $0 < \lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} < \infty$                                                                              \\
                   & $\Theta(f)=O(f) \cap o(f)$                                                                                                               \\
-                  & $c_1f(n)\le g(n) \le c_2f(n)$    TODO: Für rest                                                                                          \\ \hline
+                  & $c_1f(n)\le g(n) \le c_2f(n)$                                                                                                            \\ \hline
     $g=o(f)$      & $g$ wächst langsamer als $f$                                                                                                             \\
                   & $\lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} = 0$                                                                                       \\
                   & $o(f):=\{g: \mathbb R \rightarrow \mathbb R \, | \,  \forall c>0 \, \exists n_0 \in \mathbb N : \forall n > n_0: g(n) \le c f(n)\}$      \\ \hline
@@ -18,6 +18,9 @@
                   & $\lim_{n \rightarrow \infty}\frac{g(n)}{f(n)} = \infty$                                                                                  \\
                   & $\omega(f):=\{g: \mathbb R \rightarrow \mathbb R \, | \,  \forall c>0 \, \exists n_0 \in \mathbb N : \forall n > n_0: g(n) \ge c f(n)\}$
 \end{tabularx}
+
+$1<\log_{10}(n)<\ln(n)<\log_2(n)<\sqrt{n}<n<n\cdot \ln(n)<(\log n)! <n^2 < e^n < n! < n^n < 2^{2^n}$\\
+Aber $\eset{\log_{10}(n), \ln (n), log_2 (n)} \in \Theta(\log n)$
 
 \subsubsection{Rechenregeln}
 Für $O, \Omega, \Theta$:
@@ -36,39 +39,7 @@ Für $O, \Omega, \Theta$:
     \item $\sum_{i=0}^na^i=\frac{a^{n+1}-1}{a-1}$
 \end{itemize}
 
-\subsubsection{Amortisierte Laufzeitschranken}
-Kosten eines teuren Aufrufs einer Funktion werden auf die \textbf{vorherigen}, billigen Aufrufe aufgeteilt (z.B. vector resize sehr selten teuer, sehr oft billig) \\
-Verwendet bei Analyse von Algorithmen, die Datenstrukturen verwenden (z.B. vector.push\_back worst-case $O(n)$, das passiert aber ganz selten (nur bei resize), sonst $O(1)$) \\
-Datenstruktur muss am Anfang des Algorithmus leer sein! 
-Laufzeit ergibt sich aus der Summe der Zeitfunktion einer Operation, welche $n, \log n, ...$-mal ausgeführt wird, z.B.
-\begin{equation*}
-    (\log n)T_{op1} + nT_{op2} + O(n)
-\end{equation*}
-Nachteil: Macht nur Sinn bei der Laufzeitanalyse von Algorithmen, da es egal ist, wann z.B. der vector resize passiert für die insgesamte Laufzeit.
-Bei einem FPS muss das Spiel zu jedem Zeitpunkt flüssig laufen $\rightarrow$ FPS-drop during resize
-
 \subsection{Rekursion}
-    \begin{emphbox}
-    \subsubsection{Rekursionsgleichung}
-    Laufzeit eines rekursiven Algorithmus gegeben durch z.B.
-    \begin{equation*}
-        \mathbf{T(n)}=\begin{cases}
-            O(n) + 2\mathbf{T(\frac n2)} & n > 1        \\
-            O(1)                         & \text{sonst}
-        \end{cases}
-    \end{equation*}
-\end{emphbox}
-
-\begin{sectionbox}
-    \textbf{I. Aufstellen}
-    \begin{itemize}
-        \item Nichtrekursive Laufzeiten summieren, z.B. $3O(n)=O(n)$
-        \item Rekursiver Aufruf bekommt eine Laufzeit abhängig von $T(n)$ mit einer meist kleineren Eingabe von $n$, z.B. $T(n/2)$ oder $T(n-1)$
-    \end{itemize}
-    \textbf{II. Lösen}
-    Durch Raten+Induktion, Mastertheorem, oder Rekursionsbaum
-\end{sectionbox}
-
 \begin{emphbox}
 \subsubsection{Mastertheorem}
 Rekursionsgleichung aufstellen und rekursiven Fall betrachten: Seien $a \ge 1, b \ge 1$ Konstanten
@@ -80,7 +51,3 @@ Rekursionsgleichung aufstellen und rekursiven Fall betrachten: Seien $a \ge 1, b
           $T(n)=\Theta(n^{\log_b a}\log^{k+1}n)$
 \end{enumerate}
 \end{emphbox}
-Man kann hier immer annehmen, dass $n=b^l$ gilt, damit $n/b$ eine Integer-Division bleibt
-
-\subsubsection{Rekursionsbaum}
-TODO s. VL 18.5.

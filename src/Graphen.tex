@@ -1,8 +1,25 @@
-Bestehend aus Knoten (v) und Kanten (e)
+$G=(V,E)$ mit $V$: Menge der Knoten ($n$), $G$: Menge der Kanten ($m$).
 \begin{sectionbox}
-\begin{description}
-    \item[ungerichteter Graph] Verbindung zwischen Knoten hat keine Richtung: $\{1, 5\}$
-    \item[gerichteter Graph] Verbindung zwischen Knoten hat Richtung: $(1,5)$ von Knoten $1$ nach Knoten $5$
-    \item[Grad] Anzahl der Nachbarn eines Knotens (Anzahl der Kanten)
-\end{description}    
+    \begin{description}
+        \item[v adjazent zu u] $(u,v)$ bzw. $\{u,v\} \in E$
+        \item[inzident] Knoten $v$ und Kante $e$, wenn $e=\{x,v\}$
+    \end{description}
+\end{sectionbox}
+
+\subsection{Darstellung von Graphen}
+\begin{sectionbox}
+    \subsubsection{Adjazenzmatrix}
+    Speichert vorhandenen Kanten in $A \in \mathbb R^{n\times n}$ Matrix. Eine Zeile gehört zu einem Knoten
+    \begin{itemize}
+        \item $A(i,j)=1(=\text{Gewicht, bei gewichtetem Graph})$, falls Kante von $v_i$ zu $v_j$ existiert
+        \item $A(i,j)=0$, sonst
+    \end{itemize}
+    Symmetrisch bei ungerichtetem Graphen. Kanten einfügen löschen einfach, Knoten einfügen/löschen schwierig. Hohen Speicherverbrauch
+
+    \subsubsection{Adjazenzliste}
+    Speichert für jeden Knoten eine verkette Liste mit Nachbarn des jeweiligen Knotens; die Knoten selbst werden woanders gespeichert (Array z.B.) \\
+
+    \subsubsection{Statischer Graph}
+    Array mit allen Kanten, wobei ein Bereich im Array zu den Verbindungen eines bestimmten Knotens gehört. \\
+    Array mit allen Knoten, wobei für jeden Knoten der Index seines Bereichs und die Menge an Nachbarn gespeichert wird
 \end{sectionbox}

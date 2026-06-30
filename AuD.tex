@@ -22,6 +22,36 @@ citecolor=col_link,
 \titleformat{\subsubsection}
 {\normalfont\normalsize\bfseries}{\thesubsubsection}{.5em}{}
 
+\renewcommand{\t}{\texttt}
+\newcommand{\f}{{\bfseries}}
+
+
+\newcommand{\ttscale}{s*[0.8]}
+\DeclareFontFamily{OT1}{cmtt}{\hyphenchar\font -1 }
+\DeclareFontShape{OT1}{cmtt}{m}{n}{
+        <-9>   \ttscale cmtt8
+        <9-10> \ttscale cmtt9
+        <10-12>\ttscale cmtt10
+        <12->  \ttscale cmtt12
+      }{}
+\DeclareFontShape{OT1}{cmtt}{m}{it}{
+        <->    \ttscale cmitt10
+      }{}
+\DeclareFontShape{OT1}{cmtt}{m}{sl}{
+        <->    \ttscale cmsltt10
+      }{}
+\DeclareFontShape{OT1}{cmtt}{m}{sc}{
+        <->    \ttscale cmtcsc10
+      }{}
+\DeclareFontShape{OT1}{cmtt}{m}{ui}
+       {<->ssub*cmtt/m/it}{}
+\DeclareFontShape{OT1}{cmtt}{bx}{n}
+       {<->ssub*cmtt/m/n}{}
+\DeclareFontShape{OT1}{cmtt}{bx}{it}
+       {<->ssub*cmtt/m/it}{}
+\DeclareFontShape{OT1}{cmtt}{bx}{ui}
+       {<->ssub*cmtt/m/it}{}
+
 
 \vspace{-4mm}
 
